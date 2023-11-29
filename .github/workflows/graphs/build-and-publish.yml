@@ -88,6 +88,8 @@ nodes:
       script: |-
         go mod tidy
         go build .
+        ls -lsa
+        pwd
   - id: orange-watermelon-lion
     type: github:actions/upload-artifact@v3.1.3
     position:
@@ -105,4 +107,4 @@ nodes:
 registries:
   - github:actions/upload-artifact@v3.1.3
 description: ''
-mtime: 2023-11-29T18:51:39.258Z
+mtime: 2023-11-29T19:26:40.823Z
