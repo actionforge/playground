@@ -66,19 +66,19 @@ nodes:
   - id: rabbit-dolphin-raspberry
     type: github:actions/upload-artifact@v3.1.3
     position:
-      x: 2040
-      y: 110
+      x: 2060
+      y: 120
     inputs:
-      name: graph-runner-linux-amd64
-      path: graph-runner
+      name: playground-linux-amd64
+      path: playground
   - id: blueberry-lemon-orange
     type: github:actions/upload-artifact@v3.1.3
     position:
       x: 2040
       y: 600
     inputs:
-      name: graph-runner-windows-x64
-      path: graph-runner.exe
+      name: playground-windows-x64.exe
+      path: playground.exe
   - id: penguin-dog-blueberry
     type: shell@v1
     position:
@@ -96,8 +96,8 @@ nodes:
       x: 2040
       y: 360
     inputs:
-      name: graph-runner-macos
-      path: graph-runner
+      name: playground-macos-amd64
+      path: playground
   - id: blackberry-mango-peach
     type: platform-switch@v1
     position:
@@ -107,4 +107,4 @@ nodes:
 registries:
   - github:actions/upload-artifact@v3.1.3
 description: ''
-mtime: 2023-11-29T19:26:40.823Z
+mtime: 2023-11-29T19:31:36.329Z
