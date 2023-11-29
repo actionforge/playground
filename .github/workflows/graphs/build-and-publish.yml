@@ -13,52 +13,34 @@ executions:
       node: penguin-dog-blueberry
       port: exec
   - src:
-      node: penguin-dog-blueberry
-      port: exec
-    dst:
-      node: blue-monkey-tiger
-      port: exec
-  - src:
-      node: blue-monkey-tiger
-      port: exec-5
-    dst:
-      node: penguin-coconut-gray
-      port: exec
-  - src:
-      node: blue-monkey-tiger
-      port: exec-4
-    dst:
-      node: yellow-kangaroo-pineapple
-      port: exec
-  - src:
-      node: blue-monkey-tiger
-      port: exec-3
-    dst:
-      node: giraffe-monkey-plum
-      port: exec
-  - src:
-      node: penguin-coconut-gray
-      port: exec
-    dst:
-      node: rabbit-dolphin-raspberry
-      port: exec
-  - src:
-      node: yellow-kangaroo-pineapple
-      port: exec
-    dst:
-      node: blueberry-lemon-orange
-      port: exec
-  - src:
-      node: giraffe-monkey-plum
-      port: exec
-    dst:
-      node: orange-watermelon-lion
-      port: exec
-  - src:
       node: gh-start
       port: exec
     dst:
       node: kiwi-gray-parrot
+      port: exec
+  - src:
+      node: penguin-dog-blueberry
+      port: exec
+    dst:
+      node: blackberry-mango-peach
+      port: exec
+  - src:
+      node: blackberry-mango-peach
+      port: exec-win
+    dst:
+      node: blueberry-lemon-orange
+      port: exec
+  - src:
+      node: blackberry-mango-peach
+      port: exec-linux
+    dst:
+      node: rabbit-dolphin-raspberry
+      port: exec
+  - src:
+      node: blackberry-mango-peach
+      port: exec-macos
+    dst:
+      node: orange-watermelon-lion
       port: exec
 connections: []
 nodes:
@@ -81,78 +63,46 @@ nodes:
       y: 320
     inputs:
       go-version: '>=1.21'
-  - id: penguin-coconut-gray
-    type: shell@v1
-    position:
-      x: 1950
-      y: 200
-    inputs:
-      script: >-
-        GOOS=linux GOARCH=amd64 go build -o dist-linux/graph-runner-linux-amd64
-        .
-
-        tar -cvf graph-runner-linux.tar dist-linux
   - id: rabbit-dolphin-raspberry
     type: github:actions/upload-artifact@v3.1.3
     position:
-      x: 2280
-      y: 140
+      x: 2040
+      y: 110
     inputs:
       name: graph-runner-linux-amd64
-      path: graph-runner-linux.tar
-  - id: blue-monkey-tiger
-    type: parallel-exec@v1
-    position:
-      x: 1650
-      y: 350
-    inputs: {}
-  - id: yellow-kangaroo-pineapple
-    type: shell@v1
-    position:
-      x: 1950
-      y: 410
-    inputs:
-      script: >-
-        GOOS=windows GOARCH=amd64 go build -o dist/graph-runner-windows-x64.exe
-        .
+      path: graph-runner
   - id: blueberry-lemon-orange
     type: github:actions/upload-artifact@v3.1.3
     position:
-      x: 2280
-      y: 370
+      x: 2040
+      y: 600
     inputs:
       name: graph-runner-windows-x64
-      path: dist/graph-runner-windows-x64.exe
+      path: graph-runner.exe
   - id: penguin-dog-blueberry
     type: shell@v1
     position:
-      x: 1370
-      y: 400
+      x: 1420
+      y: 370
     inputs:
-      script: go mod tidy
-  - id: giraffe-monkey-plum
-    type: shell@v1
-    position:
-      x: 1950
-      y: 610
-    inputs:
-      script: >-
-        GOOS=darwin GOARCH=arm64 go build -o dist-macos/graph-runner-macos-arm64
-        .
-
-        GOOS=darwin GOARCH=amd64 go build -o dist-macos/graph-runner-macos-amd64
-        .
-
-        tar -cvf graph-runner-macos.tar dist-macos
+      script: |-
+        go mod tidy
+        go build .
   - id: orange-watermelon-lion
     type: github:actions/upload-artifact@v3.1.3
     position:
-      x: 2280
-      y: 590
+      x: 2040
+      y: 360
     inputs:
       name: graph-runner-macos
-      path: graph-runner-macos.tar
+      path: graph-runner
+  - id: blackberry-mango-peach
+    type: platform-switch@v1
+    position:
+      x: 1730
+      y: 360
+    inputs: {}
 registries:
   - github:actions/upload-artifact@v3.1.3
 description: ''
-mtime: 2023-11-28T19:54:44.036Z
+mtime: 2023-11-29T18:51:39.258Z
