@@ -12,5 +12,5 @@ jobs:
         uses: actionforge/action@v0.4.37-alpha
         with:
           graph_file: build-and-publish.yml
-        secrets:
-          TEST: Foo
+        env:
+          SECRET_TEST: Foo
