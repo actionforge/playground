@@ -9,6 +9,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Execute Action Graph
-        uses: actionforge/action@v0.4.36-alpha
+        uses: actionforge/action@v0.4.37-alpha
         with:
           graph_file: build-and-publish.yml
