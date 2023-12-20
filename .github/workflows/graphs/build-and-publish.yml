@@ -1,0 +1,29 @@
+entry: gh-start
+executions:
+  - src:
+      node: gh-start
+      port: exec-on-push
+    dst:
+      node: run-v1-raspberry-blackberry-strawberry
+      port: exec
+connections: []
+nodes:
+  - id: gh-start
+    type: gh-start@v1
+    position:
+      x: 300
+      y: 380
+    settings:
+      folded: false
+  - id: run-v1-raspberry-blackberry-strawberry
+    type: run@v1
+    position:
+      x: 870
+      y: 640
+    inputs:
+      script: go mod tidy
+    settings:
+      folded: false
+registries:
+  - github:actions/upload-artifact@v3.1.3
+description: ''
