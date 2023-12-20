@@ -24,6 +24,4 @@ nodes:
       script: go mod tidy
     settings:
       folded: false
-registries:
-  - github:actions/upload-artifact@v3.1.3
 description: ''
